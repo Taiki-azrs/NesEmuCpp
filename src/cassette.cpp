@@ -14,17 +14,18 @@ namespace nes{
     uint32_t PRG_Pages = data[4];
     cassette::PRG_ROM.resize(PRG_Pages * 0x4000);
     cassette::CHR_ROM.resize(CHR_Pages * 0x2000);
-
+    
     uint32_t PRG_ROMStart = HEADER;
     uint32_t PRG_ROMEnd = PRG_ROMStart + PRG_Pages * 0x4000;
     uint32_t CHR_ROMStart = PRG_ROMEnd;
     uint32_t CHR_ROMEnd = CHR_ROMStart + CHR_Pages * 0x2000;
-
+    //printf("CHR_ROM:%d-%d=%dbytes,%d\n:",CHR_ROMStart,CHR_ROMEnd,CHR_ROMEnd-CHR_ROMStart,cassette::CHR_ROM.size());
     for(uint32_t i=PRG_ROMStart;i<PRG_ROMEnd;i++){
       PRG_ROM[i]=data[i];
     }
     for(uint32_t i=CHR_ROMStart;i<CHR_ROMEnd;i++){
-      CHR_ROM[i]=data[i];
+      uint32_t offset_chr_rom=i-CHR_ROMStart;
+      CHR_ROM[offset_chr_rom]=data[i];
     }
   }
 
