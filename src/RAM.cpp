@@ -10,4 +10,4 @@ namespace nes{
     ram[addr]=value;
   }
     
-      
+
