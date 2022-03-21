@@ -11,6 +11,5 @@ namespace nes{
     CPU cpu;
     RAM ram;
   public:
-    void reset();
     NES();
 }

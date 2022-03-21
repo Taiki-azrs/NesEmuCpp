@@ -1,11 +1,13 @@
 #ifndef CPU_H
 #define CPU_H
 #include <type.hpp>
+#include "RAM.hpp"
 namespace nes{
   class CPU{
   public:
-    void set_pc(addr);
+    CPU(RAM &mem);
     void reset();
+    void interrupt(byte high_addr,byte low_addr);
   private:
     byte A;
     byte X;
@@ -21,6 +23,7 @@ namespace nes{
     bool P_Z=false;
     bool P_C=false;
     
+    RAM &bus;
     
   };
 };
