@@ -17,7 +17,22 @@ namespace nes{
     P_Z=false;
     P_C=false;
   }
-  CPU::interrupt(byte high_addr,byte low_addr){
+  CPU::interrupt(enum intr_type t){
+    byte high_addr;
+    byte low_addr;
+    switch(t){
+    case NMI:
+      high_addr=0xfffb;
+      low_addr=0xfffa;
+      break;
+    case RESET:
+      reset();
+      return;
+    case IRQ_BRK:
+      high_addr=0xffff;
+      low_addr=0xfffe;
+      break;
+    }
     byte low = bus.read(low_addr);
     byte high = bus.read(high_addr);
     byte2 addr = (high << 8) + low;
