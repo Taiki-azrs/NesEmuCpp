@@ -3,6 +3,8 @@
 #include <type.hpp>
 namespace nes{
   class CPU{
+  public:
+    void set_pc(addr);
   private:
     byte A;
     byte X;

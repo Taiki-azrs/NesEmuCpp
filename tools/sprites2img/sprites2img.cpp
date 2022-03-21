@@ -16,7 +16,7 @@ void display(cv::Mat image) {
   cv::destroyWindow(windowName);
 }
 int main(){
-  nes::cassette cst("sample1.nes");
+  nes::cassette cst("mariobros3.nes");
 
   // int cols = image.cols;
   // int rows = image.rows;

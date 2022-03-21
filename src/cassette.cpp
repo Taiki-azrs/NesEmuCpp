@@ -7,7 +7,6 @@ namespace nes{
     ifs.seekg(0, std::ios::end); //seek end
     long long int size = ifs.tellg(); // current pos(size)
     ifs.seekg(0);
-    //byte *data = new byte[size];
     char *data = new char[size];
     ifs.read(data,size);
     uint32_t CHR_Pages = data[5];
@@ -19,7 +18,6 @@ namespace nes{
     uint32_t PRG_ROMEnd = PRG_ROMStart + PRG_Pages * 0x4000;
     uint32_t CHR_ROMStart = PRG_ROMEnd;
     uint32_t CHR_ROMEnd = CHR_ROMStart + CHR_Pages * 0x2000;
-    //printf("CHR_ROM:%d-%d=%dbytes,%d\n:",CHR_ROMStart,CHR_ROMEnd,CHR_ROMEnd-CHR_ROMStart,cassette::CHR_ROM.size());
     for(uint32_t i=PRG_ROMStart;i<PRG_ROMEnd;i++){
       PRG_ROM[i]=data[i];
     }
