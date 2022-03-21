@@ -5,6 +5,7 @@ namespace nes{
   class CPU{
   public:
     void set_pc(addr);
+    void reset();
   private:
     byte A;
     byte X;
