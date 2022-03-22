@@ -8,6 +8,8 @@ namespace nes{
     CPU(RAM &mem);
     void reset();
     void interrupt(byte high_addr,byte low_addr);
+    void push_stack(byte value);
+    void pop_stack();
   private:
     byte A;
     byte X;
@@ -23,8 +25,7 @@ namespace nes{
     bool P_Z=false;
     bool P_C=false;
     
-    RAM &bus;
-    
+    RAM &bus;    
   };
 };
 #endif
